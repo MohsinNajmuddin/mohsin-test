@@ -108,7 +108,9 @@ function callSendAPI(sender_psid, response) {
       "id": sender_psid
     },
     "message": response
-  }
+  };
+
+  console.log(request_body);
 
   request({
     "uri": "https://graph.facebook.com/v2.6/me/messages",

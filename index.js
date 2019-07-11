@@ -4,6 +4,13 @@ const request = require('request');
 
 const PAGE_ACCESS_TOKEN = "EAAJ8YVVvr3YBAPeZCdLnrTZAkc3dROjlDDNXKUM1UaZBXRcFSFfiTBAfVruXWNYHv2EM0eJLZA92sZBcZBHNY2BPEB3Nvcu0E6EWTbnF0NUqtyvoH0O0VGsxP9dPVkMZA7ouRMgkYSZAY76kC8qnrslfS78wnxAZAA7Lp2QnRYjltT1jciIn9O9Ca";
 
+const myCredentials = {
+  key: 'gKOarUhI6MCtWEpCkcXHrg',
+  secret: '5QkQUyqZP9qcbJvGyio4XT7VMmmGLEV485u9z1OoOU'
+};
+ 
+const gr = goodreads(myCredentials);
+
 // Imports dependencies and set up http server
 const
   express = require('express'),
@@ -96,8 +103,14 @@ function handleMessage(sender_psid, received_message) {
 
 // Handles messaging_postbacks events
 function handlePostback(sender_psid, received_postback) {
-
-
+  let payload = received_postback.payload;
+  // Set the response based on the postback payload
+  console.log(payload);
+  if (payload === 'GET_STARTED_PAYLOAD') {
+    response = { "text": "Welcome to the Hello Readers club. Here you can find books from over a million collection of different categories. In order to search for the books, search it by its title or ISBN"}
+  }
+  // Send the message to acknowledge the postback
+  callSendAPI(sender_psid, response);
 }
 
 // Sends response messages via the Send API

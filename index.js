@@ -103,8 +103,8 @@ function handleMessage(sender_psid, received_message) {
 
 // Handles messaging_postbacks events
 function handlePostback(sender_psid, received_postback) {
-  let response;
-  let payload = received_postback.payload;
+  // let response;
+  // let payload = received_postback.payload;
   // Set the response based on the postback payload
   console.log('call agai');
   // if (payload === 'GET_STARTED_PAYLOAD') {

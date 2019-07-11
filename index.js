@@ -103,8 +103,10 @@ function handleMessage(sender_psid, received_message) {
 
 // Handles messaging_postbacks events
 function handlePostback(sender_psid, received_postback) {
+  let response;
   let payload = received_postback.payload;
   // Set the response based on the postback payload
+  console.log('call agai');
   console.log(payload);
   if (payload === 'GET_STARTED_PAYLOAD') {
     response = { "text": "Welcome to the Hello Readers club. Here you can find books from over a million collection of different categories. In order to search for the books, search it by its title or ISBN"}

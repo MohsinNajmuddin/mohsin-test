@@ -91,6 +91,7 @@ app.get('/webhook', (req, res) => {
 function handleMessage(sender_psid, received_message) {
 
   let response;
+  console.log('iske handleMessage main aya');
 
   // Check if the message contains text
   if (received_message.text) {    
@@ -133,6 +134,7 @@ function handlePostback(sender_psid, received_postback) {
      };
      setQuickReplies(sender_psid, response);
   } else if (payloadtitle === 'SEARCH_ID_PAYLOAD') {
+    console.log('iske payload main aya');
     response = {
       'text': 'Please enter book ID'
     };

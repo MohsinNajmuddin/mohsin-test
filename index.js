@@ -109,7 +109,7 @@ function handlePostback(sender_psid, received_postback) {
 
   // Set the response based on the postback payload
   if (payload === 'GET_STARTED_PAYLOAD') {
-    response = { "text": "Welcome to the readers club. Here you can search for books from our millions of records. Our collections contains books of different categories. To search for any book type its title or ID (Goodreads ID)" };
+    response = { "text": "Hello {{user_first_name}}. Welcome to the readers club. Here you can search for books from our millions of records. Our collections contains books of different categories. To search for any book type its title or ID (Goodreads ID)" };
   }
   // Send the message to acknowledge the postback
   callSendAPI(sender_psid, response);

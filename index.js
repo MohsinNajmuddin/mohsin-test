@@ -4,12 +4,14 @@ const request = require('request');
 
 const PAGE_ACCESS_TOKEN = "EAAJ8YVVvr3YBAPeZCdLnrTZAkc3dROjlDDNXKUM1UaZBXRcFSFfiTBAfVruXWNYHv2EM0eJLZA92sZBcZBHNY2BPEB3Nvcu0E6EWTbnF0NUqtyvoH0O0VGsxP9dPVkMZA7ouRMgkYSZAY76kC8qnrslfS78wnxAZAA7Lp2QnRYjltT1jciIn9O9Ca";
 
-// const myCredentials = {
-//   key: 'gKOarUhI6MCtWEpCkcXHrg',
-//   secret: '5QkQUyqZP9qcbJvGyio4XT7VMmmGLEV485u9z1OoOU'
-// };
- 
-// const gr = goodreads(myCredentials);
+const goodreads = require('goodreads-api-node');
+
+const myCredentials = {
+  key: 'gKOarUhI6MCtWEpCkcXHrg',
+  secret: '5QkQUyqZP9qcbJvGyio4XT7VMmmGLEV485u9z1OoOU'
+};
+
+const gr = goodreads(myCredentials);
 
 // Imports dependencies and set up http server
 const
@@ -105,14 +107,53 @@ function handleMessage(sender_psid, received_message) {
 function handlePostback(sender_psid, received_postback) {
   let response;
   // Get the payload for the postback
-  let payload = received_postback.payload;
+  let payloadtitle = received_postback.payload;
 
   // Set the response based on the postback payload
-  if (payload === 'GET_STARTED_PAYLOAD') {
-    response = { "text": "Welcome to the readers club. Here you can search for books from our millions of records. Our collections contains books of different categories. To search for any book type its title or ID (Goodreads ID)" };
+  if (payloadtitle === 'GET_STARTED_PAYLOAD') {
+    response = {
+      "text": "Welcome to the readers club. Here you can search for books from our millions of records. Our collections contains books of different categories. To search for any book type its title or ID (Goodreads ID)",
+      "quick_replies":[
+        {
+          "content_type":"text", "title”:”Search by Id”,"payload”:”SEARCH_ID_PAYLOAD”
+        },{
+          "content_type":"text", "title”:”Search by Title”, "payload”:”SEARCH_TITLE_PAYLOAD”
+        }
+       ],
+     };
+     setQuickReplies(sender_psid, response);
+  } else if (payloadtitle === 'SEARCH_ID_PAYLOAD') {
+
+  } else if (payloadtitle === 'SEARCH_TITLE_PAYLOAD') {
+
+  } else {
+     // Send the message to acknowledge the postback
+     callSendAPI(sender_psid, response);
   }
-  // Send the message to acknowledge the postback
-  callSendAPI(sender_psid, response);
+}
+
+function setQuickReplies(sender_psid, response) {
+  let request_body = {
+    "messaging_type": "RESPONSE",
+    "recipient": {
+      "id": sender_psid
+    },
+    "message": response,
+  };
+  console.log(request_body);
+
+  request({
+    "uri": "https://graph.facebook.com/v3.3/me/messages",
+    "qs": { "access_token": PAGE_ACCESS_TOKEN },
+    "method": "POST",
+    "json": request_body
+  }, (err, res, body) => {
+    if (!err) {
+      console.log('message sent!')
+    } else {
+      console.error("Unable to send message:" + err);
+    }
+  });
 }
 
 // Sends response messages via the Send API

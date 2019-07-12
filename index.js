@@ -89,30 +89,23 @@ app.get('/webhook', (req, res) => {
 
 // Handles messages events
 function handleMessage(sender_psid, received_message) {
-
   let response;
-  console.log('iske handleMessage main aya');
-  console.log(received_message);
-
   // Check if the message contains text
-  if (received_message.text) {    
-    console.log(selectedSearchOption);
-    if (selectedSearchOption === 'TITLE') {
-
-    } else if (selectedSearchOption === 'ID') {
-      gr.showBook(received_message.text).then(function (response) {
-        console.log('Book search by id');
-        console.log(response);
-      });
+  if (received_message.quick_reply) {
+    if (received_message.quick_reply.payload === 'SEARCH_ID_PAYLOAD') {
+      response = {
+        'text': 'Please enter book ID'
+      };
+      selectedSearchOption = 'ID';
+    } else if (received_message.quick_reply.payload === 'SEARCH_TITLE_PAYLOAD') {
+      response = {
+        'text': 'Please enter book title'
+      };
+      selectedSearchOption = 'TITLE';
     }
-    // Create the payload for a basic text message
-    // response = {
-    //   "text": `You sent the message: "${received_message.text}". Now send me an image!`
-    // }
-  }  
-
-  // Sends the response message
-  //callSendAPI(sender_psid, response);
+    callSendAPI(sender_psid, response);
+  } else if (received_message.text && selectedSearchOption) {
+  }
 }
 
 // Handles messaging_postbacks events
@@ -134,21 +127,7 @@ function handlePostback(sender_psid, received_postback) {
        ],
      };
      setQuickReplies(sender_psid, response);
-  } else if (payloadtitle === 'SEARCH_ID_PAYLOAD') {
-    console.log('iske payload main aya');
-    response = {
-      'text': 'Please enter book ID'
-    };
-    selectedSearchOption = 'ID';
-    callSendAPI(sender_psid, response);
-  } else if (payloadtitle === 'SEARCH_TITLE_PAYLOAD') {
-    response = {
-      'text': 'Please enter book title'
-    };
-    selectedSearchOption = 'TITLE';
-    callSendAPI(sender_psid, response);
   } else {
-    console.log('idhar aya');
      // Send the message to acknowledge the postback
      callSendAPI(sender_psid, response);
   }
@@ -191,7 +170,7 @@ function callSendAPI(sender_psid, response) {
   console.log(request_body);
 
   request({
-    "uri": "https://graph.facebook.com/v2.6/me/messages",
+    "uri": "https://graph.facebook.com/v3.3/me/messages",
     "qs": { "access_token": PAGE_ACCESS_TOKEN },
     "method": "POST",
     "json": request_body

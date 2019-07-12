@@ -92,6 +92,7 @@ function handleMessage(sender_psid, received_message) {
 
   let response;
   console.log('iske handleMessage main aya');
+  console.log(received_message);
 
   // Check if the message contains text
   if (received_message.text) {    

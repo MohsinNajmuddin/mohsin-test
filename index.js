@@ -4,12 +4,12 @@ const request = require('request');
 
 const PAGE_ACCESS_TOKEN = "EAAJ8YVVvr3YBAPeZCdLnrTZAkc3dROjlDDNXKUM1UaZBXRcFSFfiTBAfVruXWNYHv2EM0eJLZA92sZBcZBHNY2BPEB3Nvcu0E6EWTbnF0NUqtyvoH0O0VGsxP9dPVkMZA7ouRMgkYSZAY76kC8qnrslfS78wnxAZAA7Lp2QnRYjltT1jciIn9O9Ca";
 
-const myCredentials = {
-  key: 'gKOarUhI6MCtWEpCkcXHrg',
-  secret: '5QkQUyqZP9qcbJvGyio4XT7VMmmGLEV485u9z1OoOU'
-};
+// const myCredentials = {
+//   key: 'gKOarUhI6MCtWEpCkcXHrg',
+//   secret: '5QkQUyqZP9qcbJvGyio4XT7VMmmGLEV485u9z1OoOU'
+// };
  
-const gr = goodreads(myCredentials);
+// const gr = goodreads(myCredentials);
 
 // Imports dependencies and set up http server
 const

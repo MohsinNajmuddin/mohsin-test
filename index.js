@@ -13,6 +13,8 @@ const myCredentials = {
 
 const gr = goodreads(myCredentials);
 
+var selectedSearchOption = '';
+
 // Imports dependencies and set up http server
 const
   express = require('express'),
@@ -92,15 +94,23 @@ function handleMessage(sender_psid, received_message) {
 
   // Check if the message contains text
   if (received_message.text) {    
+    console.log(selectedSearchOption);
+    if (selectedSearchOption === 'TITLE') {
 
-    // Create the payload for a basic text message
-    response = {
-      "text": `You sent the message: "${received_message.text}". Now send me an image!`
+    } else if (selectedSearchOption === 'ID') {
+      gr.showBook(${received_message.text}).then(function (response) {
+        console.log('Book search by id');
+        console.log(response);
+      });
     }
+    // Create the payload for a basic text message
+    // response = {
+    //   "text": `You sent the message: "${received_message.text}". Now send me an image!`
+    // }
   }  
 
   // Sends the response message
-  callSendAPI(sender_psid, response); 
+  //callSendAPI(sender_psid, response);
 }
 
 // Handles messaging_postbacks events
@@ -123,9 +133,17 @@ function handlePostback(sender_psid, received_postback) {
      };
      setQuickReplies(sender_psid, response);
   } else if (payloadtitle === 'SEARCH_ID_PAYLOAD') {
-
+    response = {
+      'text': 'Please enter book ID'
+    };
+    selectedSearchOption = 'ID';
+    callSendAPI(sender_psid, response);
   } else if (payloadtitle === 'SEARCH_TITLE_PAYLOAD') {
-
+    response = {
+      'text': 'Please enter book title'
+    };
+    selectedSearchOption = 'TITLE';
+    callSendAPI(sender_psid, response);
   } else {
      // Send the message to acknowledge the postback
      callSendAPI(sender_psid, response);

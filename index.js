@@ -98,7 +98,7 @@ function handleMessage(sender_psid, received_message) {
     if (selectedSearchOption === 'TITLE') {
 
     } else if (selectedSearchOption === 'ID') {
-      gr.showBook(${received_message.text}).then(function (response) {
+      gr.showBook(received_message.text).then(function (response) {
         console.log('Book search by id');
         console.log(response);
       });

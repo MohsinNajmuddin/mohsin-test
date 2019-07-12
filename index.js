@@ -112,12 +112,12 @@ function handlePostback(sender_psid, received_postback) {
   // Set the response based on the postback payload
   if (payloadtitle === 'GET_STARTED_PAYLOAD') {
     response = {
-      "text": "Welcome to the readers club. Here you can search for books from our millions of records. Our collections contains books of different categories. To search for any book type its title or ID (Goodreads ID)",
-      "quick_replies":[
+      'text': 'Welcome to the readers club. Here you can search for books from our millions of records. Our collections contains books of different categories. To search for any book type its title or ID (Goodreads ID)',
+      'quick_replies':[
         {
-          "content_type":"text", "title”:”Search by Id”,"payload”:”SEARCH_ID_PAYLOAD”
+          'content_type':'text', 'title':'Search by Id','payload':'SEARCH_ID_PAYLOAD'
         },{
-          "content_type":"text", "title”:”Search by Title”, "payload”:”SEARCH_TITLE_PAYLOAD”
+          'content_type':'text', 'title':'Search by Title', 'payload':'SEARCH_TITLE_PAYLOAD'
         }
        ],
      };

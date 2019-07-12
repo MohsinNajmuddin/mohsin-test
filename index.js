@@ -104,7 +104,15 @@ function handleMessage(sender_psid, received_message) {
       selectedSearchOption = 'TITLE';
     }
     callSendAPI(sender_psid, response);
-  } else if (received_message.text && selectedSearchOption) {
+  } else if (received_message.text) {
+    if (selectedSearchOption === 'TITLE') {
+
+    } else if (selectedSearchOption === 'ID') {
+      gr.showBook(received_message.text).then(function (response) {
+        console.log('Book search by id');
+        console.log(response);
+      });
+    }
   }
 }
 

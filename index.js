@@ -126,7 +126,7 @@ function handlePostback(sender_psid, received_postback) {
       'text': 'Welcome to the readers club. Here you can search for books from our millions of records. Our collections contains books of different categories. To search for any book type its title or ID (Goodreads ID)',
       'quick_replies':[
         {
-          'content_type':'text', 'title':'Search by Id','payload':'SEARCH_ID_PAYLOAD'
+          'content_type':'text', 'title':'Search by Id', 'payload':'SEARCH_ID_PAYLOAD'
         },{
           'content_type':'text', 'title':'Search by Title', 'payload':'SEARCH_TITLE_PAYLOAD'
         }
@@ -147,6 +147,7 @@ function handlePostback(sender_psid, received_postback) {
     selectedSearchOption = 'TITLE';
     callSendAPI(sender_psid, response);
   } else {
+    console.log('idhar aya');
      // Send the message to acknowledge the postback
      callSendAPI(sender_psid, response);
   }

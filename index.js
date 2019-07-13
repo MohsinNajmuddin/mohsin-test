@@ -119,9 +119,8 @@ function handleMessage(sender_psid, received_message) {
         console.log(response);
         if (!!response.search.results.work) {
           var topFiveBooks = response.search.results.work.splice(0, 5).map(function (bookObj) {
-            console.log(bookObj.id);
-            console.log(bookObj);
-            return { 'content_type': 'text', 'title': bookObj.title, 'payload': 'BOOK_SEARCHED' };
+            console.log(bookObj.best_book.id._);
+            return { 'content_type': 'text', 'title': bookObj.best_book.title, 'payload': bookObj.best_book.id._};
           });
           console.log('topFiveBooks');
           console.log(topFiveBooks);
@@ -142,8 +141,7 @@ function handleMessage(sender_psid, received_message) {
             ]
           };
         }
-        // console.log(response.search.results.work);
-        // console.log(response.search.results.work.length);
+        callSendAPI(sender_psid, response);
       });
     } else if (selectedSearchOption === 'ID') {
       selectedSearchOption = '';

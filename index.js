@@ -97,15 +97,16 @@ function handleMessage(sender_psid, received_message) {
         'text': 'Please enter book\'s ID (Goodreads ID)'
       };
       selectedSearchOption = 'ID';
+      callSendAPI(sender_psid, response);
     } else if (received_message.quick_reply.payload === 'SEARCH_TITLE_PAYLOAD') {
       response = {
         'text': 'Please enter book\'s title'
       };
       selectedSearchOption = 'TITLE';
+      callSendAPI(sender_psid, response);
     } else {
       console.log('BOOK_SEARCHED');
     }
-    callSendAPI(sender_psid, response);
   } else if (received_message.text) {
     if (selectedSearchOption === 'TITLE') {
       selectedSearchOption = '';
@@ -120,7 +121,7 @@ function handleMessage(sender_psid, received_message) {
         if (!!response.search.results.work) {
           var topFiveBooks = response.search.results.work.splice(0, 5).map(function (bookObj) {
             console.log(bookObj.best_book.id._);
-            return { 'content_type': 'text', 'title': bookObj.best_book.title, 'payload': bookObj.best_book.id._};
+            return { 'content_type': 'text', 'title': bookObj.best_book.title, 'payload': bookObj.best_book.title};
           });
           response = {
             'text': 'Your searched results are listed below. Click on the book you would like to purchase in future, on the basis of its review we will help you in recommending whether to purchase it or not',
@@ -136,7 +137,7 @@ function handleMessage(sender_psid, received_message) {
       gr.showBook(received_message.text).then(function (bookData) {
         console.log('Book search by id');
         if (!!bookData) {
-          var searchedBook = {'content_type': 'text', 'title': bookData.book.title, 'payload': bookData.book.id};
+          var searchedBook = {'content_type': 'text', 'title': bookData.book.title, 'payload': bookData.book.title};
           response = {
             'text': 'Your searched book is listed below. To decide whether to purchase it or not, click on the book\'s link below, on the basis of its reviews we will help you in deciding about it.',
             'quick_replies': [searchedBook]

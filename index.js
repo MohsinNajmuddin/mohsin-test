@@ -94,12 +94,12 @@ function handleMessage(sender_psid, received_message) {
   if (received_message.quick_reply) {
     if (received_message.quick_reply.payload === 'SEARCH_ID_PAYLOAD') {
       response = {
-        'text': 'Please enter book ID'
+        'text': 'Please enter book\'s ID (Goodreads ID)'
       };
       selectedSearchOption = 'ID';
     } else if (received_message.quick_reply.payload === 'SEARCH_TITLE_PAYLOAD') {
       response = {
-        'text': 'Please enter book title'
+        'text': 'Please enter book\'s title'
       };
       selectedSearchOption = 'TITLE';
     } else {
@@ -122,35 +122,46 @@ function handleMessage(sender_psid, received_message) {
             console.log(bookObj.best_book.id._);
             return { 'content_type': 'text', 'title': bookObj.best_book.title, 'payload': bookObj.best_book.id._};
           });
-          console.log('topFiveBooks');
-          console.log(topFiveBooks);
           response = {
-            'text': 'Your searched results are listed below.\nClick on the book you would like to purchase, on the basis of its review we will help you in recommending whether to purchase it or not',
+            'text': 'Your searched results are listed below. Click on the book you would like to purchase in future, on the basis of its review we will help you in recommending whether to purchase it or not',
             'quick_replies': topFiveBooks
           };
           callSendAPI(sender_psid, response);
         } else {
-          response = {
-            'text': 'Sorry, could not find the book you searched. You may search for another book by using the following options.',
-            'quick_replies':[
-              {
-                'content_type':'text', 'title':'Search by Id', 'payload':'SEARCH_ID_PAYLOAD'
-              },{
-                'content_type':'text', 'title':'Search by Title', 'payload':'SEARCH_TITLE_PAYLOAD'
-              }
-            ]
-          };
+          noBooksFound(sender_psid);
         }
-        callSendAPI(sender_psid, response);
       });
     } else if (selectedSearchOption === 'ID') {
       selectedSearchOption = '';
-      gr.showBook(received_message.text).then(function (response) {
+      gr.showBook(received_message.text).then(function (bookData) {
         console.log('Book search by id');
-        console.log(response);
+        if (!!bookData) {
+          var searchedBook = {'content_type': 'text', 'title': bookData.book.title, 'payload': bookData.book.id};
+          response = {
+            'text': 'Your searched book is listed below. To decide whether to purchase it or not, click on the book\'s link below, on the basis of its reviews we will help you in deciding about it.',
+            'quick_replies': [searchedBook]
+          }
+          callSendAPI(sender_psid, response);
+        } else {
+          noBooksFound(sender_psid);
+        }
       });
     }
   }
+}
+
+function noBooksFound(sender_psid) {
+  var response = {
+    'text': 'Sorry, could not find the book you searched for. You may search for another book by using the following options.',
+    'quick_replies':[
+        {
+          'content_type':'text', 'title':'Search by Id', 'payload':'SEARCH_ID_PAYLOAD'
+        },{
+          'content_type':'text', 'title':'Search by Title', 'payload':'SEARCH_TITLE_PAYLOAD'
+        }
+      ]
+    };
+    callSendAPI(sender_psid, response);
 }
 
 // Handles messaging_postbacks events

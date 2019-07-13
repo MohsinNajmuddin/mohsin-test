@@ -120,6 +120,7 @@ function handleMessage(sender_psid, received_message) {
         if (!!response.search.results.work) {
           var topFiveBooks = response.search.results.work.splice(0, 5).map(function (bookObj) {
             console.log(bookObj.id);
+            console.log(bookObj);
             return { 'content_type': 'text', 'title': bookObj.title, 'payload': 'BOOK_SEARCHED' };
           });
           console.log('topFiveBooks');

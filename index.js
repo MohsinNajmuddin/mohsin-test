@@ -102,6 +102,8 @@ function handleMessage(sender_psid, received_message) {
         'text': 'Please enter book title'
       };
       selectedSearchOption = 'TITLE';
+    } else {
+      console.log('BOOK_SEARCHED');
     }
     callSendAPI(sender_psid, response);
   } else if (received_message.text) {
@@ -115,6 +117,30 @@ function handleMessage(sender_psid, received_message) {
       gr.searchBooks(searchObj).then(function (response) {
         console.log('Book search by title');
         console.log(response);
+        if (!!response.search.results.work) {
+          var topFiveBooks = response.search.results.work.splice(0, 5).map(function (bookObj) {
+            console.log(bookObj.id);
+            return { 'content_type': 'text', 'title': bookObj.title, 'payload': 'BOOK_SEARCHED' };
+          });
+          console.log('topFiveBooks');
+          console.log(topFiveBooks);
+          response = {
+            'text': 'Your searched results are listed below.\nClick on the book you would like to purchase, on the basis of its review we will help you in recommending whether to purchase it or not',
+            'quick_replies': topFiveBooks
+          };
+          callSendAPI(sender_psid, response);
+        } else {
+          response = {
+            'text': 'Sorry, could not find the book you searched. You may search for another book by using the following options.',
+            'quick_replies':[
+              {
+                'content_type':'text', 'title':'Search by Id', 'payload':'SEARCH_ID_PAYLOAD'
+              },{
+                'content_type':'text', 'title':'Search by Title', 'payload':'SEARCH_TITLE_PAYLOAD'
+              }
+            ]
+          };
+        }
         // console.log(response.search.results.work);
         // console.log(response.search.results.work.length);
       });
@@ -144,7 +170,7 @@ function handlePostback(sender_psid, received_postback) {
         },{
           'content_type':'text', 'title':'Search by Title', 'payload':'SEARCH_TITLE_PAYLOAD'
         }
-       ],
+       ]
      };
      setQuickReplies(sender_psid, response);
   } else {

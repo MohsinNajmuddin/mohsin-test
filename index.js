@@ -109,7 +109,7 @@ function handleMessage(sender_psid, received_message) {
       selectedSearchOption = '';
       var searchObj = {
         q: received_message.text,
-        page: 1,
+        page: 5,
         field: 'title'
       };
       gr.searchBooks(searchObj).then(function (response) {

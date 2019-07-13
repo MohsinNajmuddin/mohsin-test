@@ -114,8 +114,9 @@ function handleMessage(sender_psid, received_message) {
       };
       gr.searchBooks(searchObj).then(function (response) {
         console.log('Book search by title');
-        console.log(response.search.results.work);
-        console.log(response.search.results.work.length);
+        console.log(response);
+        // console.log(response.search.results.work);
+        // console.log(response.search.results.work.length);
       });
     } else if (selectedSearchOption === 'ID') {
       selectedSearchOption = '';

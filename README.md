@@ -36,6 +36,8 @@ Note: Whenever you make any change on the local first commit and push it on your
 
 2. https://www.goodreads.com/book/show
 
+3. GoodReads api methods exposed by installing GoodReads api node.
+
 
 
 ## Screenshots:

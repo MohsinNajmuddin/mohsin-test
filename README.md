@@ -22,7 +22,8 @@ Steps of Deployment
 
    $ heroku login 
 3. Now deploy your changes to Heroku server by the following command
-    $ git push heroku master
+
+   $ git push heroku master
     
 Note: Whenever you make any change on the local first commit and push it on your github branch, and then run the command mentioned on the step #3
 

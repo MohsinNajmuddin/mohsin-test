@@ -30,7 +30,7 @@ Note: Whenever you make any change on the local first commit and push it on your
    
    You need to register your app to get a goodreads developer key With the developer key and secret you can now call goodreads().
 
-## APIS:
+## APIs Used:
 
 1. https://graph.facebook.com/v3.3/me/messages
 

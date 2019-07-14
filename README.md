@@ -51,7 +51,7 @@ Note: Whenever you make any change on the local first commit and push it on your
 
 Facebook Page
 
-<img src="screenshots/first.png" width="100"/>
+<img src="screenshots/first.png" width="3360"/>
 
 1. User clicks on the messanger icon of the Facebook page, where chatbot is deployed. User is greeted with his first name, when the chat box is opened.
 

@@ -191,18 +191,35 @@ function handlePostback(sender_psid, received_postback) {
   }
 }
 
-function getRatingsForBook(bookId) {
+function getRatingsForBook(bookId, sender_psid) {
+  var message = '';
   request({
     "uri": "https://www.goodreads.com/book/show",
     "qs": { "format": "json", "id": bookId, "text_only": "true", "key": myCredentials.key },
     "method": "GET"
   }, (err, res, body) => {
     if (!err) {
-      console.log(res);
+      message = 'Based on the review, we recommend you to purchase this book from your nearest store. Do you want to look for another book?';
+      searchAgain(message, sender_psid);
     } else {
-      console.error("Unable to send:" + err);
+      message = 'Sorry could not find the reviews of this book. Do you want to look for another book?';
+      searchAgain(message, sender_psid);
     }
   });
+}
+
+function searchAgain(message, sender_psid) {
+   var response = {
+    'text': message,
+    'quick_replies':[
+        {
+          'content_type':'text', 'title':'Search by Id', 'payload':'SEARCH_ID_PAYLOAD'
+        },{
+          'content_type':'text', 'title':'Search by Title', 'payload':'SEARCH_TITLE_PAYLOAD'
+        }
+      ]
+    };
+  callSendAPI(sender_psid, response);
 }
 
 function setQuickReplies(sender_psid, response) {

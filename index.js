@@ -13,6 +13,8 @@ const myCredentials = {
 
 const gr = goodreads(myCredentials);
 
+var convert = require('xml-js');
+
 var selectedSearchOption = '';
 
 // Imports dependencies and set up http server
@@ -196,9 +198,10 @@ function getRatingsForBook(bookId) {
     "method": "GET"
   }, (err, res, body) => {
     if (!err) {
-      console.log(res);
+      var result1 = convert.xml2json(res, {compact: true, spaces: 4});
+      console.log(result1);
     } else {
-      console.error("Unable to send message:" + err);
+      console.error("Unable to send:" + err);
     }
   });
 }

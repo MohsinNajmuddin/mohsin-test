@@ -31,9 +31,11 @@ Note: Whenever you make any change on the local first commit and push it on your
 ## Dependencies:
 
 1. Express.js
+
    npm install express body-parser --save
    
 2. Installing GoodReads api node. (For accessing GoodReads api methods)
+
    npm install --save goodreads-api-node 
    
    You need to register your app to get a goodreads developer key With the developer key and secret you can now call goodreads().

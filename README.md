@@ -49,6 +49,11 @@ Note: Whenever you make any change on the local first commit and push it on your
 3. GoodReads api methods exposed by installing GoodReads api node.
 
 
+## Demo Video
+
+![](screenshots/demo.gif)
+
+
 
 
 ## Screenshots:

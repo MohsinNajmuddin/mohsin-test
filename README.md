@@ -69,13 +69,13 @@ Conversation's Screenshot
 
 
 
-2. User pressed the 'Get Started' button and a message suddenly appears, with displaying two option below, asking the user to search for the books either by entering book's Goodreads Id or book's title. 
+2. User pressed the 'Get Started' button and a message will suddenly appear, with displaying two option below, asking the user to search for the books either by entering book's Goodreads Id or book's title. 
 
 <img src="screenshots/fourth.png" width="3360"/>
 
 
 
-3. If the "Search by Title" option is checked, then user is asked to enter the title of the book.
+3. If the "Search by Title" option is clicked, then user is asked to enter the title of the book.
 
 <img src="screenshots/fifth.png" width="3360"/>
 
@@ -87,7 +87,7 @@ Conversation's Screenshot
 
 
 
-5. If user selects any of the books, then based on its reviews a suggestion will appear below that whether to make the purchase of the book or not.
+5. If user selects any of the book, then based on its reviews a suggestion will appear below that whether to make the purchase of the book or not.
 
 <img src="screenshots/seventh.png" width="3360"/>
 
@@ -105,7 +105,7 @@ Conversation's Screenshot
 
 
 
-8. If user did not enter the correct Goodreads Id of the book or a wrong title is entered which does not exist in goodreads record, then a message will appear with an apology that to we could not find the book the user wanted to search. He is then asked to make the search again
+8. If the user did not enter the correct Goodreads Id of the book or a wrong title is entered which does not exist in goodreads record, then a message will appear with an apology that we could not find the book the user wanted to search. He is then asked to make the search again
 
 <img src="screenshots/eleven.png" width="3360"/>
 

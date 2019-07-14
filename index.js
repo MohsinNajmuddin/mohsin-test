@@ -13,8 +13,6 @@ const myCredentials = {
 
 const gr = goodreads(myCredentials);
 
-var convert = require('xml-js');
-
 var selectedSearchOption = '';
 
 // Imports dependencies and set up http server

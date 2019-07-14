@@ -219,7 +219,7 @@ function searchAgain(message, sender_psid) {
         }
       ]
     };
-  callSendAPI(sender_psid, response);
+  setQuickReplies(sender_psid, response);
 }
 
 function setQuickReplies(sender_psid, response) {

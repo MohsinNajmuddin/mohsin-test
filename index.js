@@ -107,7 +107,7 @@ function handleMessage(sender_psid, received_message) {
       selectedSearchOption = 'TITLE';
       callSendAPI(sender_psid, response);
     } else {
-      getRatingsForBook(received_message.quick_reply.payload);
+      getRatingsForBook(received_message.quick_reply.payload, sender_psid);
     }
   } else if (received_message.text) {
     if (selectedSearchOption === 'TITLE') {

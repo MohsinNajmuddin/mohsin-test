@@ -90,11 +90,10 @@ Conversation's Screenshot
 
 6. With the above message, then user is given again an option to search for the book by entering the book's title or books Goodreads ID.
 
-<img src="screenshots/eight.png" width="3360"/>
-
-
 
 7. If user selects the option to search it by ID, then the user is asked to enter the Id of the book. And if correct Id is entered, then only that book will appear below. User will have the option to select that book and know its reviews, that whether to buy it or not.
+
+<img src="screenshots/eight.png" width="3360"/>
 
 <img src="screenshots/nine.png" width="3360"/>
 

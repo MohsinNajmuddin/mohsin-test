@@ -198,8 +198,7 @@ function getRatingsForBook(bookId) {
     "method": "GET"
   }, (err, res, body) => {
     if (!err) {
-      var result1 = convert.xml2json(res, {compact: true, spaces: 4});
-      console.log(result1);
+      console.log(res);
     } else {
       console.error("Unable to send:" + err);
     }

@@ -55,32 +55,52 @@ Facebook Page
 
 1. User clicks on the messanger icon of the Facebook page, where chatbot is deployed. User is greeted with his first name, when the chat box is opened.
 
+<img src="screenshots/third.png" width="3360"/>
+
 
 
 2. User pressed the 'Get Started' button and a message suddenly appears, with displaying two option below, asking the user to search for the books either by entering book's Goodreads Id or book's title. 
 
+<img src="screenshots/fourth.png" width="3360"/>
+
+
 
 3. If the "Search by Title" option is checked, then user is asked to enter the title of the book.
+
+<img src="screenshots/fifth.png" width="3360"/>
 
 
 
 4. If the correct title is entered, then maximum of 5 suggestions will appear below of the books which got searched on the basis of the title entered.
 
+<img src="screenshots/sixth.png" width="3360"/>
+
 
 
 5. If user selects any of the books, then based on its reviews a suggestion will appear below that whether to make the purchase of the book or not.
 
+<img src="screenshots/seventh.png" width="3360"/>
 
 
 6. With the above message, then user is given again an option to search for the book by entering the book's title or books Goodreads ID.
+
+<img src="screenshots/eight.png" width="3360"/>
 
 
 
 7. If user selects the option to search it by ID, then the user is asked to enter the Id of the book. And if correct Id is entered, then only that book will appear below. User will have the option to select that book and know its reviews, that whether to buy it or not.
 
+<img src="screenshots/nine.png" width="3360"/>
+
+<img src="screenshots/ten.png" width="3360"/>
+
 
 
 8. If user did not enter the correct Goodreads Id of the book or a wrong title is entered which does not exist in goodreads record, then a message will appear with an apology that to we could not find the book the user wanted to search. He is then asked to make the search again
+
+<img src="screenshots/eleven.png" width="3360"/>
+
+<img src="screenshots/twelve.png" width="3360"/>
 
 
 

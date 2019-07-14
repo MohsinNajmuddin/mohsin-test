@@ -20,7 +20,7 @@ Steps of Deployment
 Note: Whenever you make any change on the local first commit and push it on your github branch, and then run the command mentioned on the step #3
 
 
-## Dependencies
+## Dependencies:
 
 1. Express.js
    npm install express body-parser --save
@@ -38,7 +38,7 @@ Note: Whenever you make any change on the local first commit and push it on your
 
 
 
-##1 Screenshots:
+## Screenshots:
 
 
 

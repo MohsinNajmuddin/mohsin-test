@@ -38,7 +38,7 @@ Note: Whenever you make any change on the local first commit and push it on your
 
    npm install --save goodreads-api-node 
    
-   You need to register your app to get a goodreads developer key, with the developer key and secret you can now call goodreads().
+   You need to register your app to get a goodreads developer key, with the developer key and secret you can call goodreads().
 
 ## APIs Used:
 

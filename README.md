@@ -19,7 +19,8 @@ Steps of Deployment
 
 1. Goto the github branch of your working repository on your local machine.
 2. login with your Heroku account by using the following command. (This command is for Mac Machine)
-    $ heroku login 
+
+   $ heroku login 
 3. Now deploy your changes to Heroku server by the following command
     $ git push heroku master
     
